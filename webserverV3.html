@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://dygraphs.com/dygraph-combined.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"> </script>
+<!--script src="synchronizer.js"></script-->
+
+
+<style>
+body {
+  background-color: #eee;
+}
+.graph {
+  padding: 5px;
+  width: 48.5%;
+  height: 150px;
+}
+
+#temp, #vccaux, #vccpint, #vccoddr{
+    float:left;
+}
+#vccint, #vccbram, #vccpaux, #vccref {
+    float:right;
+}
+
+</style>
+
+
+<div class="graph" id="temp"></div>
+<script src="temperature.js"></script>
+
+<div class="graph" id="vccint"></div>
+<script src="vccint.js"></script>
+
+<div class="graph" id="vccaux"></div>
+<script src="vccaux.js"></script>
+
+<div class="graph" id="vccbram"></div>
+<script src="vccbram.js"></script>
+
+<div class="graph" id="vccpint"></div>
+<script src="vccpint.js"></script>
+
+<div class="graph" id="vccpaux"></div>
+<script src="vccpaux.js"></script>
+
+<div class="graph" id="vccoddr"></div>
+<script src="vccoddr.js"></script>
+
+<div class="graph" id="vccref"></div>
+<script src="vccref.js"></script>
+
+</head>
+</html> 

@@ -1,0 +1,79 @@
+
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script src="http://dygraphs.com/dygraph-combined.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"> </script>
+
+<nav>
+  <ul>
+    <li><a href="http://atlas.ch/">ATLAS Homepage</a></li>
+    <li><a href="allGraphs.js">Graphs Source</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+    <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
+
+  </ul>
+</nav>
+
+<style>
+body {
+  background-color: #F0F0F0;
+  margin: 10;
+  padding: 10;
+  font-size: 15px;
+}
+nav {
+      background-color: #C0C0C0;
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+nav ul{
+      margin: 0;
+      padding: 0;
+  }
+  nav ul li {
+      /* This allow us to arrange list items in a row, without using float */
+      display: inline-block;
+      list-style-type: none;
+  }
+   
+  /* Create a style for the first level items */
+  nav > ul > li > a {
+      color: #000000;
+      background-color:#A0A0A0;
+      display: block;
+      line-height: 2em;
+      padding: 0.5em 0.5em;
+      text-decoration: none;
+  }
+
+
+.chart { width: 50%; height: 160px; }
+  .chart-container { overflow: hidden; }
+  #temp{ float: left; font-family: Arial, Helvetica, sans-serif;}
+  #vccint{ float: right; font-family: Arial, Helvetica, sans-serif;}
+  
+
+  
+
+</style>
+
+
+<div id="temp" style="width:680px; height:160px;"></div>
+
+<div id="vccint" style="width:680px; height:160px;"></div>
+
+
+<script src="troubleshootgraphs.js"></script>
+
+
+</head>
+
+</html> 
