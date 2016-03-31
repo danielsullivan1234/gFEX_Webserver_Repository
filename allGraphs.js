@@ -35,7 +35,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Temperature(K)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccintPlot = new Dygraph(document.getElementById("vccint"), intdata,
                           {
@@ -43,7 +42,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccauxPlot = new Dygraph(document.getElementById("vccaux"), auxdata,
                           {
@@ -51,7 +49,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccbramPlot = new Dygraph(document.getElementById("vccbram"), bramdata,
                           {
@@ -59,7 +56,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccpintPlot = new Dygraph(document.getElementById("vccpint"), pintdata,
                           {
@@ -67,7 +63,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccpauxPlot = new Dygraph(document.getElementById("vccpaux"), pauxdata,
                           {
@@ -75,7 +70,6 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
       var vccoddrPlot = new Dygraph(document.getElementById("vccoddr"), oddrdata,
                           {
@@ -83,19 +77,27 @@ $(document).ready(function () {
                             xlabel: "Time",
                             ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
                           });
-      var vccrefPlot = new Dygraph(document.getElementById("vccref"), refposdata,
+      var vccposPlot = new Dygraph(document.getElementById("vccpos"), refposdata,
                           {
-                            title: 'Input Reference Voltage (+/-)',
+                            title: 'Positive Input Reference Voltage',
                             xlabel: "Time",
-                            ylabel: "Pos Voltage (mV)",
+                            ylabel: "Voltage (mV)",
                             drawPoints: true,
-                            showRoller: true,
+                          });
+      var vccnegPlot = new Dygraph(document.getElementById("vccneg"), refnegdata,
+                          {
+                            title: 'Negative Input Reference Voltage',
+                            xlabel: "Time",
+                            ylabel: "Voltage (mV)",
+                            drawPoints: true,
                           });
 
 //want ping response as well
-      var sync = Dygraph.synchronize(tempPlot, vccintPlot, vccauxPlot, vccbramPlot);
+      var sync = Dygraph.synchronize(tempPlot, vccintPlot, vccauxPlot, vccbramPlot, vccpintPlot, vccpauxPlot, vccoddrPlot, vccposPlot, vccnegPlot, {
+        selection: true,
+        zoom: false
+      });
 
       //real data
       var getData = function(){
@@ -137,8 +139,10 @@ $(document).ready(function () {
                    $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/61000000"),
                    $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/62000000"),
                    $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/71000000"),
+                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/72000000"),
+                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/71000000"),
                    $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/72000000")).done(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int, 
-                    raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos){
+                    raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){
                   
                    //add data
                    var t = new Date();
@@ -149,7 +153,8 @@ $(document).ready(function () {
                    addPoint(pintdata1, vccpintPlot, t, undefined, raw_pint, scale_pint);
                    addPoint(pauxdata1, vccpauxPlot, t, undefined, raw_paux, scale_paux);
                    addPoint(oddrdata1, vccoddrPlot, t, undefined, raw_oddr, scale_oddr);
-                   addPoint(refposdata1, vccrefPlot, t, undefined, raw_refpos, scale_refpos);
+                   addPoint(refposdata1, vccposPlot, t, undefined, raw_refpos, scale_refpos);
+                   addPoint(refnegdata1, vccnegPlot, t, undefined, raw_refneg, scale_refneg);
                   
                    callback();
             });

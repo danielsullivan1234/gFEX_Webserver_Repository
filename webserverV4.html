@@ -2,21 +2,22 @@
 <head>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
-<script src="http://dygraphs.com/dygraph-combined.js"></script>
+<script src="dygraph-combined.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"> </script>
+<script src="synchronizer.js"></script>
 
 <nav>
   <ul>
     <li><a href="http://atlas.ch/">ATLAS Homepage</a></li>
     <li><a href="allGraphs.js">Graphs Source</a></li>
-    <li><a href="arrayButton.html">Past Data Files</a></li>
+    <li><a href="arrayButton.html">Past Data Files</a>    </li>
     <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
     <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
     <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
     <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
     <li><a href="https://www.google.com/?gws_rd=ssl">Google Homepage (test)</a></li>
-
+      
   </ul>
 </nav>
 
@@ -51,13 +52,14 @@ nav ul{
       text-decoration: none;
   }
 
+  
 .chart { width: 50%; height: 160px; }
   .chart-container { overflow: hidden; }
-  #temp, #vccaux, #vccpint, #vccoddr { float: left; font-family: Arial, Helvetica, sans-serif;}
-  #vccint, #vccbram, #vccpaux, #vccref { float: right; font-family: Arial, Helvetica, sans-serif;}
+  #temp, #vccaux, #vccpint, #vccoddr, #vccneg { float: left; font-family: Arial, Helvetica, sans-serif;}
+  #vccint, #vccbram, #vccpaux, #vccpos { float: right; font-family: Arial, Helvetica, sans-serif;}
 
 </style>
-<script src="https://github.com/danvk/dygraphs/blob/master/src/extras/synchronizer.js"></script>
+
 <div id="temp" style="width:680px; height:155px;"></div>
 <div id="vccint" style="width:680px; height:155px;"></div>
 <div id="vccaux" style="width:680px; height:155px;"></div>
@@ -65,7 +67,8 @@ nav ul{
 <div id="vccpint" style="width:680px; height:155px;"></div>
 <div id="vccpaux" style="width:680px; height:155px;"></div>
 <div id="vccoddr" style="width:680px; height:155px;"></div>
-<div id="vccref" style="width:680px; height:155px;"></div>
+<div id="vccpos" style="width:680px; height:155px;"></div>
+<div id="vccneg" style="width:680px; height:155px;"></div>
 <script src="allGraphs.js"></script>
 
 </head>
