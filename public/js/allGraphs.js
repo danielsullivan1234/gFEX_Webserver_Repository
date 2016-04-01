@@ -101,7 +101,7 @@ $(document).ready(function () {
 
       //real data
       var getData = function(){
-            
+
             //var i=0;
             var callback = function(){
               i--;
@@ -123,27 +123,27 @@ $(document).ready(function () {
             };
             var i = 1;
             //grab data
-            $.when($.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/00000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/01000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/02000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/11000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/12000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/21000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/22000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/31000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/32000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/41000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/42000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/51000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/52000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/61000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/62000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/71000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/72000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f010020/71000000"),
-                   $.getJSON("http://ipbus1.uchicago.edu:7777/read/f0000020/0f020020/72000000")).done(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int, 
+            $.when($.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/00000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/01000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/02000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/11000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/12000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/21000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/22000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/31000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/32000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/41000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/42000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/51000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/52000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/61000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/62000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/71000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/72000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f010020/71000000"),
+                   $.getJSON("http://giordonstark.com:6789/read/f0000020/0f020020/72000000")).done(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int,
                     raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){
-                  
+
                    //add data
                    var t = new Date();
                    addPoint(tempdata1, tempPlot, t, offset_temp, raw_temp, scale_temp, 0.001);
@@ -155,11 +155,11 @@ $(document).ready(function () {
                    addPoint(oddrdata1, vccoddrPlot, t, undefined, raw_oddr, scale_oddr);
                    addPoint(refposdata1, vccposPlot, t, undefined, raw_refpos, scale_refpos);
                    addPoint(refnegdata1, vccnegPlot, t, undefined, raw_refneg, scale_refneg);
-                  
+
                    callback();
             });
-            
-          
+
+
 
 
         }
