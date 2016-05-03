@@ -158,7 +158,150 @@ $(document).ready(function () {
 
                    callback();
             });
+            var myarray = [],
+		t = new Date();
+		for (var i = -20; i <= 0; i += 1) {
+		    	var x = new Date(t.getTime() + i * 2000);
+		    	var y = 500000000000000000;
+		    	myarray.push([x, y]);
+			}
 
+
+		function printTemp() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Temperature(K)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccint() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccaux() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccbram() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccpint() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccpaux() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccoddr() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccpos() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
+		function printVccneg() {
+		    	$(document).ready(function () {
+				var row_width = 40;
+				var content = "";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
+				for (var i = 0; i < myarray.length; i += 2) {
+				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
+				    content += myarray[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+				
+			});
+		}
 
 
 
