@@ -168,7 +168,6 @@ $(document).ready(function () {
 
 
 		function printTemp() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Temperature(K)\n";
@@ -179,11 +178,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccint() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -194,11 +190,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccaux() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -209,11 +202,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccbram() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -224,11 +214,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccpint() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -239,11 +226,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccpaux() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -254,11 +238,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccoddr() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -269,11 +250,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccpos() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -284,11 +262,8 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
 		}
 		function printVccneg() {
-		    	$(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
@@ -299,8 +274,7 @@ $(document).ready(function () {
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
 				location.href = uri;
-				
-			});
+
 		}
 
 
