@@ -157,7 +157,8 @@ $(document).ready(function () {
                    addPoint(refnegdata1, vccnegPlot, t, undefined, raw_refneg, scale_refneg);
 
                    callback();
-            });
+                }).fail(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int, raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){console.log('caught an error');callback();});
+
             var myarray = [],
 		t = new Date();
 		for (var i = -20; i <= 0; i += 1) {
