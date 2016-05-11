@@ -277,7 +277,7 @@ $(document).ready(function () {
 				location.href = uri;
 
 		}
-		$('#temp').click(printTemp);
+		/*$('#temp').click(printTemp);
 		$('#vccint').click(printVccint);
 		$('#vccaux').click(printVccaux);
 		$('#vccbram').click(printVccbram);
@@ -285,7 +285,7 @@ $(document).ready(function () {
 		$('#vccpaux').click(printVccpaux);
 		$('#vccoddr').click(printVccoddr);
 		$('#vccpos').click(printVccpos);
-		$('#vccneg').click(printVccneg);
+		$('#vccneg').click(printVccneg);*/
 
 
 
