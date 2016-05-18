@@ -296,15 +296,15 @@ $(document).ready(function () {
 				location.href = uri;
 
 		}
-		/*$('#temp').click(printTemp);
-		$('#vccint').click(printVccint);
-		$('#vccaux').click(printVccaux);
-		$('#vccbram').click(printVccbram);
-		$('#vccpint').click(printVccpint);
-		$('#vccpaux').click(printVccpaux);
-		$('#vccoddr').click(printVccoddr);
-		$('#vccpos').click(printVccpos);
-		$('#vccneg').click(printVccneg);*/
+		$('#BUTTONtemp').click(printTemp);
+		$('#BUTTONvccint').click(printVccint);
+		$('#BUTTONvccaux').click(printVccaux);
+		$('#BUTTONvccbram').click(printVccbram);
+		$('#BUTTONvccpint').click(printVccpint);
+		$('#BUTTONvccpaux').click(printVccpaux);
+		$('#BUTTONvccoddr').click(printVccoddr);
+		$('#BUTTONvccpos').click(printVccpos);
+		$('#BUTTONvccneg').click(printVccneg);
 
 
 
