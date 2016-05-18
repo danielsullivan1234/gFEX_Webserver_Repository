@@ -239,9 +239,9 @@ $(document).ready(function () {
 				var row_width = 40;
 				var content = "";
 				content += "Time" + new Array(row_width + 1).join(" ") + "Millivolts(mV)\n";
-				for (var i = 0; i < myarray.length; i += 2) {
-				    content += myarray[i] + new Array(row_width - myarray[i].length + 9).join(" ");
-				    content += myarray[i+1];
+				for (var i = 0; i < tempdata1.length; i += 2) {
+				    content += tempdata1[i] + new Array(row_width - tempdata1[i].length + 9).join(" ");
+				    content += tempdata1[i+1];
 				    content += "\n";
 				}
 				uri = "data:application/octet-stream," + encodeURIComponent(content);
