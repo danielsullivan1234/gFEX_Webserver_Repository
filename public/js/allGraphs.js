@@ -1,4 +1,8 @@
 $(document).ready(function () {
+      
+      //This function creates an array of 'n' 0s dated before the time of first call
+      //In practice, this will be the beginning of the graphs,
+      //so we can start seeing new data without waiting for 20 data points to fill the graphs
       var firstdata = function(n){
         var initData = [],
             t = new Date();
@@ -9,6 +13,8 @@ $(document).ready(function () {
           }
           return initData;
         };
+        //creates two arrays per graph of 20 dated/timed 0s
+        //the arrays witht the 1 at the end are where the long term data are kept while the arrays without the 1 are truncated for the graphs
         tempdata = firstdata(20);
         tempdata1 = firstdata(20);
         intdata= firstdata(20);
@@ -29,6 +35,8 @@ $(document).ready(function () {
         refnegdata1= firstdata(20);
 
 
+      //Initialize Dygraphs (sourced in /public/js/DygraphsCombined.js) with necessary labels and data
+      //also gives and id that is called in the Jade files
       var tempPlot = new Dygraph(document.getElementById("temp"), tempdata,
                           {
                             title: 'Board Temperature',
@@ -93,13 +101,16 @@ $(document).ready(function () {
                             drawPoints: true,
                           });
 
-//want ping response as well
+      //This function is from Dygraphs and it synchronizes the cursors.  It does not work well synchronizing selectable regions
+      //That is the zoom: false command
+      //The dynamic update causes problems with the zooming
       var sync = Dygraph.synchronize(tempPlot, vccintPlot, vccauxPlot, vccbramPlot, vccpintPlot, vccpauxPlot, vccoddrPlot, vccposPlot, vccnegPlot, {
         selection: true,
         zoom: false
       });
 
       //real data
+      //This is the meat of the data acquisition
       var getData = function(){
 
             //var i=0;
@@ -108,21 +119,27 @@ $(document).ready(function () {
               if(i==0) setTimeout(getData, 2000);
             }
 
+            //Takes 7 arguments, even though some nodes have no offset
             var addPoint = function(data, plot, time, offset, raw, scale, overallScale){
               offset = (typeof offset === 'undefined') ? [{'data': 0}] : offset;
               overallScale = (typeof overallScale === 'undefined') ? 1 : overallScale;
 
+              //Generates actual data point from three arguments, even if offset is undefined
               var rawData = +raw[0].data,
                   offsetData = +offset[0].data,
                   scaleData  = +scale[0].data,
                   y = (rawData+offsetData)*scaleData*overallScale;
 
+              //push the data to the data array for each graph
               data.push([time, y]);
+              //Display only the last 20 data points
+              //Second array is left intact so past data can still be found
               plot.updateOptions( {'file': data.slice(-20)} );
 
             };
             var i = 1;
-            //grab data
+            //grab data from Giordon's website; the when statement waits for each getJSON request to come back
+            //before executing the done command.  When it is done, the data are added to the different plots
             $.when($.getJSON("http://giordonstark.com:8880/read/f0000020/0f010020/00000000"),
                    $.getJSON("http://giordonstark.com:8880/read/f0000020/0f010020/01000000"),
                    $.getJSON("http://giordonstark.com:8880/read/f0000020/0f020020/02000000"),
@@ -158,7 +175,9 @@ $(document).ready(function () {
 
                    callback();
                 }).fail(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int, raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){console.log('caught an error');callback();});
-
+		//The above fail function is to catch errors and keep the page running even when some of the data fail to come back
+		
+            //Toy array for making the buttons and stuff work....
             var myarray = [],
 		t = new Date();
 		for (var i = -20; i <= 0; i += 1) {
@@ -291,6 +310,6 @@ $(document).ready(function () {
 
 
         }
-
+//Finally we call the getData function to set everything in motion
 getData();
 });
