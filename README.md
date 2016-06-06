@@ -25,7 +25,8 @@ var firstdata = function(n){
         //the arrays witht the 1 at the end are where the long term data are kept while the arrays without the 1 are truncated for the graphs
         tempdata = firstdata(20);
         tempdata1 = firstdata(20);
-        ```
+```
+
 Next, for each graph 2 arrays are instantiated of length 20, which is the number of data points displayed on the each graph.
 
 Then, beginning on line 40, each graph is instantiated.  These graphs are Dygraphs objects, whose source code is locally built in the ```dygraphs-combined.js``` file.  Each graph is given an Id that is used to reference it in the Jade files.  The 'XXXdata' arrays are used as an input argument for each Dygraph.
