@@ -1,6 +1,33 @@
 # gFEX_Webserver_Repository
 
-We are sourcing a local build of dygraphs and run using the allGraphs.js file to generate the graphs that the webserver page displays.
+Welcome to my repository!  This repository holds the code to the webpage that I developed for the gFEX Monitoring System.
+
+The code in here is written in JavaScript and formatted using Jade.  We are sourcing a local build of dygraphs and run using the allGraphs.js file to generate the graphs that the webserver page displays.  The primary feature of the page is the display of various graphs that update at a specified interval.  In allGraphs.js, see getData() and notice that callback() uses a 2000ms delay before fetching new data (currently line 119).  There are also helpful links on the page as well as buttons that link to the past data files for each graph so that users may analyze the monitoring data at a later time.
+
+
+## allGraphs.js Explained
+
+The first function defined in allGraphs.js is ```firstdata``` which simply generates arrays of input length.  These arrays are used to generate zeros as initial data in each graph for the first data points.  This simply is implemented so that the graphs display new data immediately, instead of waiting for the required 20 points to fill the graphs.  These points will disappear once new data has been acquired, and can be truncated when analyzing a downloaded data file.
+
+```
+var firstdata = function(n){
+        var initData = [],
+            t = new Date();
+        for (var i = -n; i <= 0; i += 1) {
+                var x = new Date(t.getTime() + i * 2000); //the 2000 signifies how many milliseconds back in time from when the function
+                                                          //is called that each zero point is (i.e. 0, -2s, -4s, etc.).
+                var y = 0;
+                initData.push([x, y]);
+          }
+          return initData;
+        };
+        //creates two arrays per graph of 20 dated/timed 0s
+        //the arrays witht the 1 at the end are where the long term data are kept while the arrays without the 1 are truncated for the graphs
+        tempdata = firstdata(20);
+        tempdata1 = firstdata(20);
+        '''
+
+
 
 ## Installing
 
