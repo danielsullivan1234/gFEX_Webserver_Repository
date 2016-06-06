@@ -48,6 +48,11 @@ Each graph is also synchronized so that the position of the cursor on one graph 
       });
 ```
 
+### getData() explained
+The getData function is where the majority of the work of allGraphs.js is performed.  This function, as its name suggests, obtains monitoring data from the board.
+
+
+
 ## Installing
 
 ```
