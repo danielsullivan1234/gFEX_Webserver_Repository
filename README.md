@@ -40,8 +40,13 @@ var tempPlot = new Dygraph(document.getElementById("temp"), tempdata,
                             drawPoints: true,
                           });
 ```
-
-
+Each graph is also synchronized so that the position of the cursor on one graph is matched on the other ones.  The synchronize function is from Dygraphs and it takes as arguments the Dygraph objects we want to sync.  The zoom feature is set to false for the synchronization because it causes problems with the dynamic update feature.
+```
+      var sync = Dygraph.synchronize(tempPlot, vccintPlot, vccauxPlot, vccbramPlot, vccpintPlot, vccpauxPlot, vccoddrPlot, vccposPlot, vccnegPlot, {
+        selection: true,
+        zoom: false
+      });
+```
 
 ## Installing
 
