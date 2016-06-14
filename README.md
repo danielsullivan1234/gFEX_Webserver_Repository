@@ -51,6 +51,39 @@ Each graph is also synchronized so that the position of the cursor on one graph 
 ### getData() explained
 The getData function is where the majority of the work of allGraphs.js is performed.  This function, as its name suggests, obtains monitoring data from the board.
 
+the ```callback()``` function sets the delay between each round of data acquisition.  The time is in milliseconds, so:
+```
+var callback = function(){
+              i--;
+              if(i==0) setTimeout(getData, 2000);
+}
+```
+sets the delay to 2 seconds.  In practice, the delay will be much longer.  It is just this short in order to see more clearly what issues the webpage may have.  Decrementing ```i``` is a check that the necessary data have been requested.
+
+Here is the meat of the graphical display code:
+```
+//Takes 7 arguments, even though some nodes have no offset
+            var addPoint = function(data, plot, time, offset, raw, scale, overallScale){
+              offset = (typeof offset === 'undefined') ? [{'data': 0}] : offset;
+              overallScale = (typeof overallScale === 'undefined') ? 1 : overallScale;
+
+              //Generates actual data point from three arguments, even if offset is undefined
+              var rawData = +raw[0].data,
+                  offsetData = +offset[0].data,
+                  scaleData  = +scale[0].data,
+                  y = (rawData+offsetData)*scaleData*overallScale;
+
+              //push the data to the data array for each graph
+              data.push([time, y]);
+              //Display only the last 20 data points
+              //Second array is left intact so past data can still be found
+plot.updateOptions( {'file': data.slice(-20)} );
+```
+The function does not need to have ```offset``` be defined (it is undefined for all plots except Temperature)
+Lines 128-131 produce a final y coordinate for each plot, and this is then pushed to the data array as a pair of time and data.  The graphs only display the most recent twenty data points by slicing back 20 points in the data array.  This is so that after a long time, the graph is not cluttered with all the data points acquired since running the page.  Instead, the data rolls by and only the previous 20 points are visible.  The entirity of the past data can still be accessed from the Past Data Files links.
+
+The data is being grabbed from Giordon Stark's personal website mirroring the Uchicago-Secure network, where the board in the E-Shop is connected.  Each URL clearly maps to the proper pins: ```http://giordonstark.com:8880/read/f0000020/0f010020/52000000``` In the final string of numerals following the last ```/```, the first number denotes which sensor port is being read (0 is temperature through 8 being ```vccrefneg```).  The second number corresponds to raw, offset, and scale data (0, 1, 2, respectively).
+
 
 
 ## Installing
