@@ -123,6 +123,9 @@ function printTemp() {
 				location.href = uri;
 }
 ```
+These files need some work so that the initial zeros used do not show up, and so that the final line does not read 'undefined'.
+
+Finally, outside of ```getData()```, ```getData()``` is called in the body of the document so that data acquisition may begin. 
 
 
 ## Installing
