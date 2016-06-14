@@ -84,6 +84,45 @@ Lines 128-131 produce a final y coordinate for each plot, and this is then pushe
 
 The data is being grabbed from Giordon Stark's personal website mirroring the Uchicago-Secure network, where the board in the E-Shop is connected.  Each URL clearly maps to the proper pins: ```http://giordonstark.com:8880/read/f0000020/0f010020/52000000``` In the final string of numerals following the last ```/```, the first number denotes which sensor port is being read (0 is temperature through 8 being ```vccrefneg```).  The second number corresponds to raw, offset, and scale data (0, 1, 2, respectively).
 
+The URLs are read using a ```when()```, ```done()```, and ```fail()``` function:
+```
+$.when($.getJSON("http://giordonstark.com:8880/read/f0000020/0f010020/00000000"),
+                   $.getJSON("http://giordonstark.com:8880/read/f0000020/0f010020/01000000"),
+                   .......
+                   $.getJSON("http://giordonstark.com:8880/read/f0000020/0f020020/82000000")).done(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int,
+                    raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){
+                    raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){
+
+                   //add data
+                   var t = new Date();
+                   addPoint(tempdata1, tempPlot, t, offset_temp, raw_temp, scale_temp, 0.001);
+                   ........
+                   addPoint(refnegdata1, vccnegPlot, t, undefined, raw_refneg, scale_refneg);
+
+                   callback();
+                }).fail(function(offset_temp, raw_temp, scale_temp, raw_int, scale_int, raw_aux, scale_aux, raw_bram, scale_bram, raw_pint, scale_pint, raw_paux, scale_paux, raw_oddr, scale_oddr, raw_refpos, scale_refpos, raw_refneg, scale_refneg){console.log('caught an error');callback();});
+		//The above fail function is to catch errors and keep the page running even when some of the data fail to come back
+
+```
+The ```when()``` function executes a series of ```$.getJSON()``` requests that reads the ```data``` data from each URL, and once each has been received, the ```done()``` function resolves.  In this case, it executes ```addPoint()``` for each graph.  Sometimes, data is dropped over the network.  The ```fail()``` function prevents this from crashing the page by calling ```callback()``` so that the requests can be made again.  
+
+This concludes the portion of ```getData()``` that obtains and plots the new data on each graph.
+
+The next bunch of code relates to the text file data output and it still has some bugs.  Here is the code that constructs the Board Temperature Past Data File:
+```
+function printTemp() {
+				var row_width = 40;
+				var content = "Temperature Data\n";
+				content += "Time" + new Array(row_width + 1).join(" ") + "Temperature(K)\n";
+				for (var i = 0; i < tempdata1.length; i += 2) {
+				    content += tempdata1[i] + new Array(row_width - tempdata1[i].length + 9).join(" ");
+				    content += tempdata1[i+1];
+				    content += "\n";
+				}
+				uri = "data:application/octet-stream," + encodeURIComponent(content);
+				location.href = uri;
+}
+```
 
 
 ## Installing
